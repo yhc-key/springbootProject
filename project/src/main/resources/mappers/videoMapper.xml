@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitpjt.fit.model.dao.VideoDao">
+
+	<select id="selectAll" resultType="Video">
+		SELECT * FROM video
+	
+	</select>
+	
+	<select id="selectInterestViewFitVideo" resultType="Video" parameterType="String">
+		SELECT * FROM video
+		WHERE fitPartName = #{fitPartName};
+	</select>
+	
+	<insert id="insertVideo" parameterType="Video" keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO video (youtubeId, channelName, fitPartName, title, date, viewCnt) 
+		VALUES (#{yotubeId, #{channelName}, #{fitPartName}, #{title}, #{date}, #{viewCnt})
+	</insert>
+	
+	<select id="selectOne" resultType="Video" parameterType="String">
+		SELECT * FROM video
+		WHERE youtubeId = #{youtubeId};
+	</select>
+	
+	<update id="updateVideo" parameterType="Video">
+		UPDATE video SET channelName = #{channelName}, title =#{title}, date = now()
+		WHERE youtubeId = #{youtubeId};
+	</update>
+	
+	<delete id="deleteVideo">
+	DELETE FROM video 
+	WHERE youtubeId = #{youtubeId}
+	</delete>
+	
+	<update id="updateViewCnt" parameterType="String">
+		UPDATE video SET viewCnt = viewCnt +1
+		WHERE youtubeId = #{youtubeId};
+	</update>
+	
+	<select id="showAllreview" parameterType="String">
+		SELECT * FROM review 
+		WHERE youtubeId = #{youtubeId};
+	</select>
+
+	<insert id="insertReview" parameterType="String">
+		INSERT INTO review (youtubeId, writer, content, regDate) 
+		VALUES (#{youtubeId}, #{writer}, #{content}, now())
+	</insert>
+	
+	<select id="selectOneReview" parameterType="int">
+	 	SELECT * FROM review
+	 	WHERE reviewNo = #{reviewNo}
+	</select>
+	
+	<update id="updateReview" parameterType="Review">
+		UPDATE review SET content = #{content}
+			WHERE youtubeId = #{youtubeId} 
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM review WHERE reviewNo = #{reviewNo};
+	</delete>
+	
+
+
+
+</mapper>
