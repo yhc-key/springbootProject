@@ -54,11 +54,6 @@ public class VideoServiceImpl implements VideoService{
 		return vDao.selectOneReview(reviewNo);
 	}
 
-	@Override
-	public List<Video> randomRecommend() {
-		
-		return vDao.selectRandomVideo();
-	}
 
 	@Override
 	public void updateViewCnt(String youtubeId) {
@@ -66,10 +61,26 @@ public class VideoServiceImpl implements VideoService{
 		return ;
 	}
 
+
+	@Override
+	public Video getVideo(String youtubeId) {
+		return vDao.selectVideo(youtubeId);
+	}
+
+	@Override
+	public List<Video> getRandomVideo() {
+		return vDao.selectRandomVideo();
+	}
+
+	@Override
+	public void removeReview(int reviewNo) {
+		vDao.deleteReview(reviewNo);
+		return ;
+	}
+
 	@Override
 	public void writeVideo(Video video) {
-		vDao.insertVideo(video);
-		return ;
+		// TODO Auto-generated method stub
 		
 	}
 

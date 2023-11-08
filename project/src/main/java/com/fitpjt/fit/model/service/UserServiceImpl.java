@@ -79,4 +79,4 @@ public class UserServiceImpl implements UserService {
 	public List<User> selectFollowingUser(String followerId) {
 		return uDao.selectFollowingUser(followerId);
 	}
-}
+} 

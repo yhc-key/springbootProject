@@ -28,6 +28,7 @@ public interface UserDao {
 
 	// 유저의 좋아요 영상 추가
 //	void insertUserVideo(List<Basket> baskets, Basket basket);
+	
 	void insertLikedVideo(@Param("userId") String userId, @Param("youtubeId") String youtubeId);
 
 	// 유저의 좋아요 영상 삭제

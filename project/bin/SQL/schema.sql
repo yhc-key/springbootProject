@@ -27,9 +27,8 @@ CREATE TABLE IF NOT EXISTS `video`(
 );
 
 CREATE TABLE IF NOT EXISTS `review`(
-`youtubeId` varchar(45) CHARACTER SET utf8mb4 NOT NULL,
   `reviewNo` int(52) AUTO_INCREMENT NOT NULL,
-  
+  `youtubeId` varchar(45) CHARACTER SET utf8mb4 NOT NULL,
   `userId` varchar(45) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   `content` varchar(200) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
   `regDate` TIMESTAMP DEFAULT now() ,

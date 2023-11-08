@@ -15,11 +15,11 @@ public interface VideoDao {
 	
 	//조회수 순 비디오 조회
 	List<Video> selectInterestViewFitVideo();
+	
+	//비디오 보기
+	Video selectVideo(String youtubeId);
+	
 	// 비디오 등록
-	void insertVideo(Video video);
-
-	// 비디오 상세 조회
-	Video selectOne(String youtubeId);
 
 	// 비디오 수정
 	void updateVideo(Video video);
